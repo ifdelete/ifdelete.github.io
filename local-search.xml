@@ -4,13 +4,19 @@
   
   
   <entry>
-    <title>test</title>
-    <link href="/2022/09/28/test/"/>
-    <url>/2022/09/28/test/</url>
+    <title>Redis操作命令</title>
+    <link href="/2022/09/29/Redis%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4/"/>
+    <url>/2022/09/29/Redis%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4/</url>
     
-    <content type="html"><![CDATA[<p><img src="/2022/09/28/test/image-20220928144209840.png" alt="image-20220928144209840"></p>]]></content>
+    <content type="html"><![CDATA[<p>记录一些常用的redis执行命令。</p><span id="more"></span><p>auth 密码</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">127.0.0.1:6379&gt; auth 123456<br>OK<br></code></pre></td></tr></table></figure><p>set key value  </p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">127.0.0.1:6379&gt; <span class="hljs-built_in">set</span> key1 h1<br>OK<br></code></pre></td></tr></table></figure><p>get key</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">127.0.0.1:6379&gt; get key1<br><span class="hljs-string">&quot;h1&quot;</span><br></code></pre></td></tr></table></figure><p>keys *</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">127.0.0.1:6379&gt; keys *<br>1) <span class="hljs-string">&quot;key3&quot;</span><br>2) <span class="hljs-string">&quot;key1&quot;</span><br>3) <span class="hljs-string">&quot;key2&quot;</span><br></code></pre></td></tr></table></figure><p>exists key</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">127.0.0.1:6379&gt; exists key1<br>(<span class="hljs-built_in">integer</span>) 1<br>127.0.0.1:6379&gt; exists key4<br>(<span class="hljs-built_in">integer</span>) 0<br></code></pre></td></tr></table></figure><p>如果存在，返回1 ，不存在或者过期返回0</p><p>del key </p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs bash">127.0.0.1:6379&gt; keys *<br>1) <span class="hljs-string">&quot;key3&quot;</span><br>2) <span class="hljs-string">&quot;key1&quot;</span><br>3) <span class="hljs-string">&quot;key2&quot;</span><br>127.0.0.1:6379&gt; del key1<br>(<span class="hljs-built_in">integer</span>) 1<br>127.0.0.1:6379&gt; keys *<br>1) <span class="hljs-string">&quot;key3&quot;</span><br>2) <span class="hljs-string">&quot;key2&quot;</span><br></code></pre></td></tr></table></figure><p>unlink key 选择非阻塞删除（异步删除，效果一样</p><p>expire key seconds 设置key的过期时间</p><p>ttl key  查询key的剩余时间 单位 秒</p><p><strong>如果没有设置时间，则ttl key 返回 -1 ，代表永不过期</strong></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">127.0.0.1:6379&gt; expire key2 10000<br>(<span class="hljs-built_in">integer</span>) 1<br>127.0.0.1:6379&gt; ttl key2<br>(<span class="hljs-built_in">integer</span>) 9998<br></code></pre></td></tr></table></figure><p>select index 选择库索引</p><p>dbsize 查询当前库数据大小</p><p>flushdb 清空当前库</p><p>flushall 清空所有库</p><blockquote></blockquote>]]></content>
     
     
+    
+    <tags>
+      
+      <tag>redis</tag>
+      
+    </tags>
     
   </entry>
   
